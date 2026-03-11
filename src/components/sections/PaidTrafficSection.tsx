@@ -30,7 +30,7 @@ export default function PaidTrafficSection() {
                     >
                         <h2 className="text-purple-400 font-semibold tracking-wider uppercase mb-4 text-sm">Tráfego Pago Especializado</h2>
                         <h3 className="text-4xl md:text-6xl font-bold font-outfit mb-8 leading-tight">
-                            Atinga resultados reais com o <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-white">TRÁFEGO PAGO</span>.
+                            Atinja resultados reais com o <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-white">TRÁFEGO PAGO</span>.
                         </h3>
 
                         <p className="text-purple-100 text-lg md:text-xl leading-relaxed mb-6 font-light">
