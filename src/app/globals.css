@@ -16,7 +16,8 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #3b0764; /* Dark purple */
+  --foreground: #3b0764;
+  /* Dark purple */
 }
 
 @theme inline {
@@ -28,7 +29,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #2e054e; /* Deep purple */
+    --background: #2e054e;
+    /* Deep purple */
     --foreground: #ffffff;
   }
 }
@@ -44,13 +46,32 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
+
 ::-webkit-scrollbar-thumb {
   background: #7e22ce;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #581c87;
+}
+
+@theme {
+  --color-anilox-light: #a855f7;
+  --color-anilox: #7e22ce;
+  --color-anilox-dark: #4c1d95;
+}
+
+.font-heading {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.bg-pattern {
+  background-image: radial-gradient(#7e22ce 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.05;
 }

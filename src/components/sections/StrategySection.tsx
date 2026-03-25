@@ -1,62 +1,51 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { XCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function StrategySection() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start center", "end center"]
-    });
-
-    // Texto completo para exibição e cálculo
-    const text = "A importância de uma Estratégia inteligente. No cenário competitivo do Meta Ads, adotar uma estratégia de marketing eficiente é essencial para atingir o público ideal. Com a expertise da ANILOX DESIGN, especializada em tráfego pago, sua empresa pode conquistar leads qualificados e aumentar as conversões. Com experiência em diversos segmentos, a agência entrega resultados consistentes e de alto impacto.";
-
-    // Divide o texto em palavras
-    const words = text.split(" ");
-
     return (
-        <section
-            id="estrategia"
-            ref={containerRef}
-            className="py-32 md:py-48 bg-white dark:bg-zinc-950 min-h-screen flex items-center justify-center relative"
-        >
-            <div className="container mx-auto px-4 max-w-5xl text-center relative z-10">
-                <h2 className="text-sm font-semibold text-purple-600 tracking-wider uppercase mb-12">Nossa Abordagem</h2>
+        <section id="cenario" className="py-20 bg-gray-50 relative overflow-hidden">
+            <div className="absolute inset-0 bg-pattern"></div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-heading">
+                            O problema do <span className="text-anilox">Alcance Orgânico</span> atual.
+                        </h2>
+                        <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                            Sua empresa possui um excelente nível de profissionalismo, mas se a sua presença digital está inativa ou dependendo apenas de alcance gratuito (orgânico), você está perdendo <strong>Market Share</strong> para a concorrência.
+                        </p>
+                        <ul className="space-y-4 mb-8">
+                            <li className="flex items-start">
+                                <XCircle className="text-red-500 mt-1 mr-3 w-5 h-5 flex-shrink-0" />
+                                <span className="text-gray-700">O alcance orgânico do Instagram é praticamente nulo para aquisição de novos clientes em grande escala.</span>
+                            </li>
+                            <li className="flex items-start">
+                                <XCircle className="text-red-500 mt-1 mr-3 w-5 h-5 flex-shrink-0" />
+                                <span className="text-gray-700">Ter um perfil decorativo e não alimentá-lo estrategicamente é desperdiçar o ativo de marca da sua empresa.</span>
+                            </li>
+                        </ul>
+                    </motion.div>
 
-                <div className="text-3xl md:text-5xl lg:text-6xl font-bold font-outfit leading-[1.2] md:leading-[1.4] flex flex-wrap justify-center gap-x-3 md:gap-x-4 gap-y-2">
-                    {words.map((word, i) => {
-                        const start = i / words.length;
-                        const end = start + (1 / words.length);
-
-                        // eslint-disable-next-line react-hooks/rules-of-hooks
-                        const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1]);
-                        // eslint-disable-next-line react-hooks/rules-of-hooks
-                        const color = useTransform(scrollYProgress, [start, end], ["#d8b4fe", "#581c87"]);
-
-                        // Highlight words
-                        const highlightWords = ["Estratégia", "ANILOX", "DESIGN", "conversões", "resultados", "Meta", "Ads"];
-                        const isHighlight = highlightWords.some(hw => word.includes(hw));
-
-                        return (
-                            <motion.span
-                                key={i}
-                                style={{
-                                    opacity,
-                                    color: isHighlight ? color : 'inherit'
-                                }}
-                                className={`transition-colors duration-100 ${isHighlight ? 'text-purple-600 dark:text-purple-400' : 'text-zinc-900 dark:text-white'}`}
-                            >
-                                {word}
-                            </motion.span>
-                        );
-                    })}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50, rotate: 2 }}
+                        whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8 }}
+                        className="relative"
+                    >
+                        <div className="absolute -inset-4 bg-gradient-to-r from-anilox-light to-anilox rounded-2xl blur-lg opacity-30"></div>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="Gráficos de análise" className="relative rounded-2xl shadow-2xl border border-gray-100 hover:scale-[1.02] transition-transform duration-500" />
+                    </motion.div>
                 </div>
             </div>
-
-            {/* Background decoration */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-gradient-to-tr from-purple-100/50 via-transparent to-purple-50/20 dark:from-purple-900/10 dark:to-transparent rounded-full blur-3xl -z-10 pointer-events-none" />
         </section>
     );
 }
